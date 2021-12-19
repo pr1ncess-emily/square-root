@@ -1,8 +1,19 @@
 const sqrt = (num, precision) => {
     const getNumObj = num => {
         let obj = new Number(num);
-        return new Error("Input is not a number");
+        if (isNaN(obj)) {
+           throw new TypeError("Input is not a number");
+        }
+        return obj;
     }
-    throw(getNumObj(num));
+
+    try {
+        getNumObj(num);
+        getNumObj(precision);
+    } catch (e) {
+        throw(e);
+    }
+
+    return getNumObj(num);
 }
 export default sqrt;
